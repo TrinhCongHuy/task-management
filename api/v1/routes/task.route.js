@@ -15,6 +15,9 @@ router.post('/create', taskController.create)
 
 router.patch('/edit/:id', taskController.edit)
 
+router.patch('/delete/:id', taskController.delete)
+
+
 
 
 
