@@ -1,17 +1,22 @@
 const express = require('express')
-const app = express()
-require("dotenv").config();
-const port = process.env.PORT
-
-const database = require('./config/database')
-const routeApiVer1 = require('./api/v1/routes/index.route')
 const bodyParser = require('body-parser')
+require("dotenv").config();
+const cookieParser = require('cookie-parser')
+const database = require('./config/database')
+const cors = require('cors')
 
+const routeApiVer1 = require('./api/v1/routes/index.route')
 
+const port = process.env.PORT
+const app = express()
+
+app.use(cors())
 database.connect()
 
 // parse application/json
 app.use(bodyParser.json())
+
+app.use(cookieParser());
 
 // route version 1
 routeApiVer1(app)
