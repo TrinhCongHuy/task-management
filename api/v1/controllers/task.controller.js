@@ -117,7 +117,7 @@ module.exports.changeMulti = async (req, res) => {
             _id: { $in: ids }
           },
           {
-            deleted: true,
+            deleted: value,
             deletedAt: new Date()
           }
         )
@@ -164,7 +164,7 @@ module.exports.create = async (req, res) => {
   
 };
 
-// [EDIT] /api/v1/tasks/edit/:id
+// [PATCH] /api/v1/tasks/edit/:id
 module.exports.edit = async (req, res) => {
   try {
     const id = req.params.id
@@ -188,7 +188,7 @@ module.exports.edit = async (req, res) => {
   
 };
 
-// [EDIT] /api/v1/tasks/delete/:id
+// [PATCH] /api/v1/tasks/delete/:id
 module.exports.delete = async (req, res) => {
   try {
     const id = req.params.id
