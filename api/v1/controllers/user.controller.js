@@ -23,7 +23,8 @@ module.exports.register = async (req, res) => {
         const user = new User({
             fullName: req.body.fullName,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            token: generate.generateRandomString(20)
         })
         await user.save()
 
@@ -180,3 +181,29 @@ module.exports.resetPassword = async (req, res) => {
         message: "Thay đổi mật khẩu thành công"
     });
 };
+
+
+// [GET] /api/v1/users/detail
+module.exports.detail = async (req, res) => {
+
+    res.json({
+        code: 200,
+        message: "Thành công!",
+        info: req.user
+    });
+}
+
+
+// [GET] /api/v1/users/list
+module.exports.list = async (req, res) => {
+
+    const users = await User.find({
+        deleted: false
+    }).select("fullName email")
+
+    res.json({
+        code: 200,
+        message: "Thành công!",
+        users: users
+    });
+}
