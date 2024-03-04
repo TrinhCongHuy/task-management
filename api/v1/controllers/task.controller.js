@@ -149,11 +149,12 @@ module.exports.create = async (req, res) => {
   try {
     req.body.createdBy = req.user.id
     const task = new Task(req.body)
-    await task.save()
+    const data = await task.save()
 
     res.json({
       code: 200,
-      message: "Thêm mới task thành công!"
+      message: "Thêm mới task thành công!",
+      data: data
     });
   }catch(error) {
     res.json({

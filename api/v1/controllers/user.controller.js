@@ -34,7 +34,8 @@ module.exports.register = async (req, res) => {
 
         res.json({
             code: 200,
-            message: "Tạo tài khoản thành công!"
+            message: "Tạo tài khoản thành công!",
+            token: token
         });
     }
 };
