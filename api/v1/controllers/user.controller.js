@@ -158,7 +158,7 @@ module.exports.otpPassword = async (req, res) => {
 module.exports.resetPassword = async (req, res) => {
     const password = md5(req.body.password)
     const confirmPassword = md5(req.body.confirmPassword)
-    const token = req.cookies.token
+    const token = req.body.token
 
     if(password != confirmPassword) {
         res.json({

@@ -20,7 +20,7 @@ module.exports.index = async (req, res) => {
    // Search
    const objectSearch = searchHelper(req.query)
 
-   if (objectSearch.regex) {
+   if (req.query.keyword) {
        find.title = objectSearch.regex
    }
 
