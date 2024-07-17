@@ -8,5 +8,4 @@ module.exports = (app) => {
     const version = "/api/v1"
     app.use(version + '/tasks', authMiddleware.requireAuth, taskRoutes)
     app.use(version + '/users', userRoutes)
-
 }
